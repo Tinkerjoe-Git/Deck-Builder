@@ -1,9 +1,9 @@
 ## Todo and Structure
 
 ##User
-- has many decks through: cards
+- has many decks, through: cards
 - has_many :comments
-- has many commented_decks, through :comments
+- has many commented_decks, through :comment
 - username
 - email
 - password_digest
@@ -14,14 +14,15 @@
 
 ##Card
 - belongs_to Deck
-- has img_url
+- has image_url
 - text
-- how do we want to go about this?
 - power
 - toughness
-- cost
 - cmc
 - type
+- colors
+- set
+- mana_cost
 
 
 
@@ -36,6 +37,7 @@
 -has_many user, through :comments
 - decklist
 - sideboard
+- user_id
 
 
 
