@@ -5,3 +5,24 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'mtg_sdk'
+
+set_data = MTG::Card.where(set: 'stx').where(page: 1).where(pageSize: 414).all
+
+    set_data.each do |data|
+        puts 'generating set data...'
+        card = Card.create! (
+            name: data.name.downcase,
+            text: data.text.downcase,
+            power: data.power.to_i,
+            toughness: data.toughness.to_i,
+            cmc: data.cmc.to_i,
+            image_url: data.image_url,
+            colors: data.colors.to_s,
+            set: data.set,
+            types: data.type,
+            mana_cost: data.mana_cost.to_s
+        )
+        puts "#{card.name} generated"
+    end
+end

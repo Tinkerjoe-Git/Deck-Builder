@@ -68,3 +68,11 @@ gem "dotenv-rails", "~> 2.7"
 gem "activerecord", "~> 6.1"
 
 gem "rubocop", "~> 1.13"
+
+gem "mtg_sdk", "~> 3.2"
+
+gem "scryfall", "~> 0.2.10"
+
+gem "httparty", "~> 0.18.1"
+
+gem "nokogiri", "~> 1.11"
