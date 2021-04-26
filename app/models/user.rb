@@ -5,6 +5,5 @@ class User < ApplicationRecord
 
     has_many :decks, through: :cards
     has_many :comments
-    has_many :
 
 end

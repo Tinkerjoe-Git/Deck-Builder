@@ -7,11 +7,11 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'mtg_sdk'
 
-set_data = MTG::Card.where(set: 'stx').where(page: 1).where(pageSize: 414).all
+set_data = MTG::Card.where(set: 'eld').where(page: 1).where(pageSize: 269).all
 
     set_data.each do |data|
         puts 'generating set data...'
-        card = Card.create! (
+        card = Card.create!(
             name: data.name.downcase,
             text: data.text.downcase,
             power: data.power.to_i,
@@ -20,9 +20,10 @@ set_data = MTG::Card.where(set: 'stx').where(page: 1).where(pageSize: 414).all
             image_url: data.image_url,
             colors: data.colors.to_s,
             set: data.set,
-            types: data.type,
+            card_type: data.type,
             mana_cost: data.mana_cost.to_s
         )
         puts "#{card.name} generated"
     end
-end
+
+

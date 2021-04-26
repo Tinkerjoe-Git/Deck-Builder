@@ -6,12 +6,11 @@ class CreateCards < ActiveRecord::Migration[6.1]
       t.integer :power
       t.integer :toughness
       t.integer :cmc
-      t.string :type
+      t.string :card_type
       t.string :colors
       t.string :set
       t.string :mana_cost
       t.string :image_url
-      t.belongs_to :deck, null: false, foreign_key: true
 
       t.timestamps
     end
