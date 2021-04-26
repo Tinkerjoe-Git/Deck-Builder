@@ -7,7 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'mtg_sdk'
 
-set_data = MTG::Card.where(set: 'eld').where(page: 1).where(pageSize: 269).all
+set_data = MTG::Card.where(set: 'eld').all
+    
 
     set_data.each do |data|
         puts 'generating set data...'

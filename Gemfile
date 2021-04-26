@@ -76,3 +76,5 @@ gem "scryfall", "~> 0.2.10"
 gem "httparty", "~> 0.18.1"
 
 gem "nokogiri", "~> 1.11"
+
+gem "kaminari", "~> 1.2"
