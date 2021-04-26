@@ -12,8 +12,8 @@ set_data = MTG::Card.where(set: 'eld').where(page: 1).where(pageSize: 269).all
     set_data.each do |data|
         puts 'generating set data...'
         card = Card.create!(
-            name: data.name.downcase,
-            text: data.text.downcase,
+            name: data.name,
+            text: data.text,
             power: data.power.to_i,
             toughness: data.toughness.to_i,
             cmc: data.cmc.to_i,
