@@ -1,16 +1,12 @@
 class CardsController < ApplicationController
-        before_action :redirect_if_not_logged_in, only: [:new, :create, :edit, :update]
+    before_action :redirect_if_not_logged_in, only: [:new, :create, :edit, :update]
     before_action :find_collage, only: [:index, :new, :create]
 
-    def search
-        @cards = card.search(params[:title])
-        render :index
-    end
+    # def search
+    #     @cards = card.search(params[:title])
+    #     render :index
+    # end
 
-    def most_recent
-      
-        @cards = Card.most_recent
-    end
 
     def index
         @cards = Card.all
@@ -18,10 +14,6 @@ class CardsController < ApplicationController
     
     def show
         @card = Card.find_by(id: params[:id])
-        @comments = @card.comments
-        @comment = @card.comments.build(user_id: current_user.id)
-        @card.update(views: @card.views+1) 
-
     end
     
     def new
@@ -66,6 +58,6 @@ class CardsController < ApplicationController
     private
     #Strong Params
     def card_params
-        params.require(:card).permit(:name, :description, :card_url, :,)
+        params.require(:card).permit(:name, :text, :power, :toughness, :cmc, :card_type, :colors, :set, :mana_cost, :image_url)
     end
 end

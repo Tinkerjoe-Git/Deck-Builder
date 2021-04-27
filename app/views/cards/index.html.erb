@@ -1,0 +1,6 @@
+<li>
+    <% @cards.each do |card| %>
+        <%= card.name %>
+        <%= render card.image_url %>
+    <% end %>
+</li>
