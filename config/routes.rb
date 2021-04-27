@@ -6,6 +6,14 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
 
   delete '/logout', to: "sessions#logout"
+
+  get '/cards', to: 'cards#index'
+
+
+  get '/auth/google_oauth2/callback', to: 'sessions#omniauth'
+
+
+  root('static#home')
   
   resources :users
   resources :cards do

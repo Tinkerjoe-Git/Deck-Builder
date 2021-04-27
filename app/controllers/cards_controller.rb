@@ -1,6 +1,5 @@
 class CardsController < ApplicationController
-    before_action :redirect_if_not_logged_in, only: [:new, :create, :edit, :update]
-    before_action :find_collage, only: [:index, :new, :create]
+    #before_action :redirect_if_not_logged_in, only: [:new, :create, :edit, :update]
 
     # def search
     #     @cards = card.search(params[:title])
@@ -13,7 +12,7 @@ class CardsController < ApplicationController
     end
     
     def show
-        @card = Card.find_by(id: params[:id])
+        @card = Card.find(params[:id])
     end
     
     def new
