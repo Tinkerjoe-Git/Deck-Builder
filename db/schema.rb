@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_25_204558) do
+ActiveRecord::Schema.define(version: 2021_04_27_224605) do
 
   create_table "cards", force: :cascade do |t|
     t.string "name"
@@ -27,10 +27,11 @@ ActiveRecord::Schema.define(version: 2021_04_25_204558) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "comments", force: :cascade do |t|
-    t.text "content"
-    t.integer "user_id"
-    t.integer "deck_id"
+  create_table "decklists", force: :cascade do |t|
+    t.string "card_id"
+    t.string "deck_id"
+    t.string "quantities"
+    t.string "card_types"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -1,0 +1,2 @@
+class DecklistsController < ApplicationController
+end

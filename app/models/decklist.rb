@@ -1,0 +1,2 @@
+class Decklist < ApplicationRecord
+end

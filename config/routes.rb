@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
 
 
+  resources :decklists
   resources :users
   resources :cards
   resources :decks
-  resources :comments
   
   
   get '/signup', to: 'users#new'

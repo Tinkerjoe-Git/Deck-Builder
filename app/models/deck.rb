@@ -1,8 +1,7 @@
 class Deck < ApplicationRecord
   belongs_to :user
   has_many :cards
-  has_many :comments ##reseed?
-  has_many :users, through: :comments
+  has_many :cards, through: :decklists
   ####Scope out our breakdown.
 
   validates :name, presence: true
