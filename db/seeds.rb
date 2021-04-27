@@ -6,13 +6,26 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'mtg_sdk'
+require 'faker'
+
+
+4.times do
+    User.create(
+        name: Faker::Name.name,
+        email: Faker::Internet.email,
+        username: Faker::Internet.username,
+        password: Faker::Internet.password
+    )
+end
+
+User.create(name: "Pasta Batman", email: "pastabatman@gmail.com", username: "MTGbatman",  password: "password")
 
 set_data = MTG::Card.where(set: 'eld').all
     
 
     set_data.each do |data|
         puts 'generating set data...'
-        card = Card.create!(
+        cards = Card.create(
             name: data.name,
             text: data.text,
             power: data.power.to_i,
@@ -24,7 +37,13 @@ set_data = MTG::Card.where(set: 'eld').all
             card_type: data.type,
             mana_cost: data.mana_cost.to_s
         )
-        puts "#{card.name} generated"
+        cards.save
+        puts "#{cards.name} generated"
     end
+
+
+    
+
+
 
 
