@@ -13,17 +13,17 @@
             </li>
 
             <li>
-                <%= link_to 'LOGOUT', logout_path, class: 'nav-link active', method: 'delete' %>
+                <%= link_to 'Log Out', logout_path, class: 'nav-link active', method: 'delete' %>
             </li>
         <% else %>
             <li>
-                <%= link_to 'LOGIN', login_path, class: 'nav-link active' %>
+                <%= link_to 'Log In', login_path, class: 'nav-link active' %>
             </li>
             <li>
-                <%= link_to 'SIGNUP', signup_path, class: 'nav-link active' %>
+                <%= link_to 'Sign Up', signup_path, class: 'nav-link active' %>
             </li>
             <li>
-                <%= link_to 'LOGIN WITH GOOGLE', "/auth/google_oauth2", class: 'nav-link active', method: "post" %>
+                <%= link_to 'Log In With Your Google Account', "/auth/google_oauth2", class: 'nav-link active', method: "post" %>
             </li>
         <% end %>
 

@@ -1,10 +1,10 @@
 class CardsController < ApplicationController
     #before_action :redirect_if_not_logged_in, only: [:new, :create, :edit, :update]
 
-    # def search
-    #     @cards = card.search(params[:title])
-    #     render :index
-    # end
+    def search
+        @cards = Card.search(params[:name])
+        render :index
+    end
 
 
     def index

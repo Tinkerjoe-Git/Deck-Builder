@@ -13,3 +13,13 @@
  *= require_tree .
  *= require_self
  */
+
+ @import "bootstrap";
+
+
+ .splash {
+  background-image: image-url("background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}

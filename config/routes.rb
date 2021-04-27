@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 
 
   get '/auth/google_oauth2/callback', to: 'sessions#omniauth'
+  get '/search', to: 'cards#search', as: 'search'
 
 
   root('static#home')

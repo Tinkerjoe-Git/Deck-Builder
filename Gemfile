@@ -80,3 +80,5 @@ gem "nokogiri", "~> 1.11"
 gem "kaminari", "~> 1.2"
 
 gem "omniauth-google-oauth2", "~> 1.0"
+
+gem "bootstrap", "~> 4.6"
