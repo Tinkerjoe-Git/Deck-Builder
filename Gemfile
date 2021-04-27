@@ -78,3 +78,5 @@ gem "httparty", "~> 0.18.1"
 gem "nokogiri", "~> 1.11"
 
 gem "kaminari", "~> 1.2"
+
+gem "omniauth-google-oauth2", "~> 1.0"

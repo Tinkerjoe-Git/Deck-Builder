@@ -1,10 +1,9 @@
 
-<%= render partial: 'application/errors', locals: {object: @user} %>
 <div class="wrapper">
 
     <h1>Sign Up</h1>
         <%= form_for @user do |f| %>
-            <%= render partial: 'signup_form', locals: {f: f} %>
+            <%= render partial: 'signup', locals: {f: f} %>
     
                 <%= f.label :password %>
                 <%= f.password_field :password %>

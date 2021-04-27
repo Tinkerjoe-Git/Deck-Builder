@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+
+
+  resources :users
+  resources :cards
+  resources :decks
+  resources :comments
+  
+  
   get '/signup', to: 'users#new'
   post '/signup', to: 'users#create'
 
@@ -15,12 +23,6 @@ Rails.application.routes.draw do
 
   root('static#home')
   
-  resources :users
-  resources :cards do
-    get :feed, on: :collection
-  end
-  resources :decks
-  resources :comments
 
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
