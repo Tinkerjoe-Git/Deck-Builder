@@ -130,7 +130,6 @@ GEM
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
       rake
-    gem (0.0.1.alpha)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     hashie (4.1.0)
@@ -368,7 +367,6 @@ DEPENDENCIES
   dotenv-rails (~> 2.7)
   draper (~> 4.0)
   faker (~> 2.17)
-  gem (~> 0.0.1.alpha)
   httparty (~> 0.18.1)
   jbuilder (~> 2.7)
   kaminari (~> 1.2)

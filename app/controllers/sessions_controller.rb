@@ -22,15 +22,17 @@ class SessionsController < ApplicationController
           u.email = auth[:info][:email]
           u.username = auth[:info][:email]
           u.name = auth[:info][:name]
+          u.uid = auth[:uid]
+          u.provider = auth[:provider]
           u.password = SecureRandom.hex(10)
       end
       
       if @user.valid?
-          flash[:messsage] = "You're signed in with Google"
+          flash[:messsage] = "You've signed in with Google!"
           session[:user_id] = @user.id
           redirect_to cards_path
       else
-          flash[:message] = "Credential error"
+          flash[:message] = "Credentials didn't go through"
           redirect_to login_path
       end
   end

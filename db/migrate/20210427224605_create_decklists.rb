@@ -4,7 +4,6 @@ class CreateDecklists < ActiveRecord::Migration[6.1]
       t.string :card_id
       t.string :deck_id
       t.string :quantities
-      t.string :card_types
 
       t.timestamps
     end
