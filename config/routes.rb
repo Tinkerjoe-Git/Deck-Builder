@@ -1,10 +1,16 @@
 Rails.application.routes.draw do
 
 
-  resources :decklists
+  
   resources :users
   resources :cards
-  resources :decks
+  resources :decklists do
+    resources :cards
+  end
+  resources :decks do
+    resources :decklists
+  end
+
   
   
   get '/signup', to: 'users#new'

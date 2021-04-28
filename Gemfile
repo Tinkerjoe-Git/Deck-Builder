@@ -82,3 +82,9 @@ gem "kaminari", "~> 1.2"
 gem "omniauth-google-oauth2", "~> 1.0"
 
 gem "bootstrap", "~> 4.6"
+
+
+gem "omniauth-rails_csrf_protection", "~> 1.0"
+
+gem "gem", "~> 0.0.1.alpha"
+gem "omniauth", "~> 2.0"

@@ -31,7 +31,6 @@ ActiveRecord::Schema.define(version: 2021_04_27_224605) do
     t.string "card_id"
     t.string "deck_id"
     t.string "quantities"
-    t.string "card_types"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
