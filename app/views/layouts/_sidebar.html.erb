@@ -7,6 +7,9 @@
         <li>
             <%= link_to 'All Decks', decks_path, class: 'nav-link active' %>
         </li>
+        <li>
+            <%= link_to 'Card Collection from Eldraine', cards_path, class: 'nav-link active' %>
+        </li>
         <% if logged_in? %>
             <li>
                 <%= link_to 'Create New Deck', new_deck_path, class: 'nav-link active' %>

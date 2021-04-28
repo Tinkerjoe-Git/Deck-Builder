@@ -34,6 +34,6 @@ class DecklistsController < ApplicationController
     private
 
     def decklist_params
-        params.require(:decklist).permit(:card_id, :user_id, :quantities, deck_attributes: [:name, :decklist, :user_id])
+        params.require(:decklist).permit(:card_id, :user_id, :quantities) # deck_attributes: [:name, :decklist, :user_id])
     end
 end

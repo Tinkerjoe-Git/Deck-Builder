@@ -23,6 +23,7 @@ Rails.application.routes.draw do
 
   get '/cards', to: 'cards#index'
 
+  post '/decks', to: "decks#create"
 
   get '/auth/google_oauth2/callback', to: 'sessions#omniauth'
   get '/search', to: 'cards#search', as: 'search'
