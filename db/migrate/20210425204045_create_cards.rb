@@ -6,11 +6,18 @@ class CreateCards < ActiveRecord::Migration[6.1]
       t.integer :power
       t.integer :toughness
       t.integer :cmc
+      t.string :rarity
       t.string :card_type
+      t.string :artist
       t.string :colors
       t.string :set
+      t.string :flavor
       t.string :mana_cost
       t.string :image_url
+      t.integer :loyalty
+      t.string :number
+      t.integer :multiverse_id
+      t.belongs_to :magic_set, index: true
 
       t.timestamps
     end
