@@ -1,0 +1,15 @@
+<%= form_with(model: model) do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %><br>
+    <%= f.label :decklist %>
+    <%= f.text_field :decklist %><br>
+    <h3> <%= form_title %></h3>
+    <%= f.fields_for :decklist do |i| %>
+      <%= i.label :quantities %>
+      <%= i.text_field :quantities %><br>
+      <hr>
+    <% end %>
+  
+    
+    <%= f.submit button_name %>
+<% end %>

@@ -1,15 +1,23 @@
-<%= form_with(model: model) do |f| %>
-    <%= f.label :name %>
-    <%= f.text_field :name %><br>
-    <%= f.label :decklist %>
-    <%= f.text_field :decklist %><br>
-    <h3> <%= form_title %></h3>
-    <%= f.fields_for :decklist do |i| %>
-      <%= i.label :quantities %>
-      <%= i.text_field :quantities %><br>
-      <hr>
-    <% end %>
+
+<%= form_for @deck do |f| %>
+
+
+  <div>Deck Name:</div> <div><%= f.text_field :name %></div>
+
+
+Add Cards:
+
+   <div>
+    <%= f.fields_for :decklists, @decklists do |decklists| %>
+    <div>
+      Quantities: <%= decklists.text_field :quantities %>
   
-    
-    <%= f.submit button_name %>
+    Select Cards: <%= decklists.collection_select :card_id, Card.order('name ASC').all, :id, :name, include_blank: 'Select Card' %>
+    <%= decklists.fields_for :quantities, @deck.cards.build do |card| %>
+    <% end %>
+    </div>
+      <% end %>
+   </div>
+
+  <%= f.submit "Submit" %>
 <% end %>
