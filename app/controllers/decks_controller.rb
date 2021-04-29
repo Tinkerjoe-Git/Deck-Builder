@@ -1,9 +1,9 @@
 class DecksController < ApplicationController
-    before_action :find_decklist, only: [:index, :new, :create]
+    # before_action :find_decklist, only: [:index, :new, :create]
 
     def new
         @deck = Deck.new
-        @decklist = 3.times.collect { @deck.decklist.build }
+        @decklist = 3.times.collect { @deck.decklists.build }
         
         # else
         #     flash[:notice] = "Couldn't find decklist"
