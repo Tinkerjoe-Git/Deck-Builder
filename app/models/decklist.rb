@@ -1,5 +1,6 @@
 class Decklist < ApplicationRecord
-    has_many :cards
+    belongs_to :deck
+    has_many :cards, through: :deck
 
     
     

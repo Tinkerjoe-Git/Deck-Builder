@@ -16,6 +16,13 @@ class UsersController < ApplicationController
         end
     end
 
+    def show
+        @user = current_user.id
+        @decks = @user.decks
+        @deck = Deck.new
+        @decklists = 3.times.map { @deck.decklists.build }
+    end
+
     private
     def user_params
         params.require(:user).permit(:name, :username, :password, :email )

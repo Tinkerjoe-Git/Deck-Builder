@@ -18,6 +18,14 @@ require 'faker'
     )
 end
 
+20.times do 
+  Decklist.create(
+    quantities: "#{rand(1..4)} #{["Gilded Goose", "Questing Beast", "Brazen Borrower", "Once Upon a Time", "Oko, Thief of Crowns", "The Great Henge", "Lovestruck Beast", "Island", "Plains", "Mountain", "Swamp", "Forest", "Scorching Dragonfire", "Bonecrusher Giant", "Embercleave", "Robber of the Rich", "Acclaimed Contender", "Venerable Knight", "The Circle of Loyalty", "Tournament Grounds", "Joust", "Worthy Knight"].sample}",
+    card_id: rand(1..457),
+    deck_id: rand(1..20)
+  )
+end
+
 User.create(name: "Pasta Batman", email: "pastabatman@gmail.com", username: "MTGbatman",  password: "password")
 
 set_data = MTG::Card.where(set: 'eld').all

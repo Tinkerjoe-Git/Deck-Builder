@@ -59,4 +59,5 @@ class CardsController < ApplicationController
     def card_params
         params.require(:card).permit(:name, :text, :power, :toughness, :cmc, :card_type, :colors, :set, :mana_cost, :image_url)
     end
+
 end
