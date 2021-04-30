@@ -3,12 +3,22 @@
     <%= f.text_field :name %><br>
     <%= f.label :creator %>
     <%= f.text_field :creator %><br>
-    <%= f.label :format %>
-    <%= f.text_field :format %><br>
-    <%= f.label :main_board %>
-    <%= f.text_field :main_board %><br>
-    <%= f.label :side_board %>
-    <%= f.text_field :side_board %><br>
+    <%= f.label :mainboard %>
+    <%= f.text_field :mainboard %><br>
+    <%= f.label :sideboard %>
+    <%= f.text_field :sideboard %><br>
+
+   <div>
+    <%= f.fields_for :deck_cards, @cards do |deck_card| %>
+    <div>
+      card_count: <%= deck_card.text_field :card_count %>
+  
+    Select Card: <%= deck_card.collection_select :card_id, Card.order('name ASC').all, :id, :name, include_blank: 'Select card' %>
+    <%= deck_card.fields_for :card, deck.cards.build do |card| %>
+    <% end %>
+    </div>
+      <% end %>
+   </div>   
   
     
     <%= f.submit button_name %>
