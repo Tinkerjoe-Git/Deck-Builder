@@ -2,20 +2,22 @@ class Deck < ApplicationRecord
   belongs_to :user
   has_many :deck_cards
   has_many :cards, through: :deck_cards
-  validates :name, :format, presence: true
+  # TODO: Do we still have format?
+  validates :name, presence: true
 
-  accepts_nested_attributes_for :deck_cards    
-  accepts_nested_attributes_for :cards
+  # TODO: What's up with nest attributes, do we need it?
+  # accepts_nested_attributes_for :deck_cards    
+  # accepts_nested_attributes_for :cards
 
   scope :search, -> (query) { self.where("name LIKE ?", "%#{query}%") }
 
+  # TODO: Maybe get rid of these methods?
   def delete_cards_from_deck
-      cards.size.times do
+    cards.size.times do
       card = DeckCard.find_by(deck_id: self.id)
       card.delete
     end
   end
-
 
   def add_cards_to_deck(params)
 

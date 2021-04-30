@@ -1,0 +1,5 @@
+<p><%= @deck.name %></p>
+
+<p>creator: <%= @deck.user.username %></p>
+
+<p>cards: <%= @deck.cards.map { |card| card.name }.join(", ") %></p>

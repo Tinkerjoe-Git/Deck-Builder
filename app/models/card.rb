@@ -1,5 +1,5 @@
 class Card < ApplicationRecord
-  belongs_to :deck, optional: true
+  # belongs_to :deck, optional: true
   has_many :deck_cards
   has_many :decks, through: :deck_cards
 
@@ -8,11 +8,13 @@ class Card < ApplicationRecord
 
   scope :search, -> (query) { self.where("name LIKE ?", "%#{query}%") }
 
-  def deck_attributes=(attributes)
-    
-    if !(attributes[:name].blank?
-        self.deck = Deck.find_or_create_by(attributes)
-    end
+
+
+  # TODO: What is this?
+  def deck_attributes=(attributes) 
+      if !attributes[:name].blank?
+          self.deck = Deck.find_or_create_by(attributes)
+      end
   end
 
   private

@@ -1,11 +1,10 @@
 class DecksController < ApplicationController
     # before_action :find_deckcards, only: [:index, :new, :create]
-    skip_before_action :verify_authenticity_token
+    #skip_before_action :verify_authenticity_token
 
     def new
         @deck = Deck.new
     end
-    
 
     def index
         @decks = Deck.all
@@ -16,18 +15,19 @@ class DecksController < ApplicationController
     end
 
     def create
-        @deck = Deck.create(
-        name: params[:name],
-        user_id: current_user.id
-        )
-        params[:cards].map do |card|
-        DeckCard.create(
-            deck_id: @deck.id,
-            card_id: card[:id]
-        )
-        @deck.save
+        # What we expect params to be:
+        # deck_params = { name: "hello", card_ids: [1, 2, 3] }
+
+        @deck = current_user.decks.create!(name: deck_params[:name])
+
+        deck_params[:card_ids].map do |card_id|
+            DeckCard.create!(
+                deck_id: @deck.id,
+                card_id: card_id
+            )
         end
-        render status: 200
+
+        redirect_to deck_path(@deck)
     end
 
 
@@ -55,7 +55,7 @@ class DecksController < ApplicationController
     private
 
     def deck_params
-        params.require(:deck).permit(:name, :user_id)
+        params.require(:deck).permit(:name, card_ids: [])
     end
 
     def card_params
