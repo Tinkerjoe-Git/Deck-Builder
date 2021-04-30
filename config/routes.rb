@@ -4,12 +4,15 @@ Rails.application.routes.draw do
   
   resources :users
   resources :cards
-  resources :decklists do
+  resources :collections
+  resources :deck_cards do
     resources :cards
   end
   resources :decks do
-    resources :decklists
+    resources :deck_cards
   end
+
+  resources :formats, only: [:index]
 
   
   
