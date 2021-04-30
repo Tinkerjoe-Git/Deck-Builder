@@ -18,9 +18,7 @@ class UsersController < ApplicationController
 
     def show
         @user = current_user.id
-        @decks = @user.decks
         @deck = Deck.new
-        @decklists = 3.times.map { @deck.decklists.build }
     end
 
     private

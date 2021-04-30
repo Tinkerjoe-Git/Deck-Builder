@@ -4,7 +4,7 @@ require 'faker'
 
 
 
-#User.create_admin
+User.create_admin
 
 card_data = MTG::Card.where(set: 'khm').all
     

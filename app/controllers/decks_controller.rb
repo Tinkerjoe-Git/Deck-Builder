@@ -4,7 +4,6 @@ class DecksController < ApplicationController
 
     def new
         @deck = Deck.new
-        @cards = 4.times.collect { @deck.deck_cards.build }
     end
     
 
@@ -16,18 +15,21 @@ class DecksController < ApplicationController
         @deck = Deck.find(params[:id])
     end
 
-
     def create
-        @deck = current_user.decks.new(deck_params)
-        if @deck.save
-            @deck.add_cards_to_deck(deck_cards_params)
-            redirect_to deck_path(@deck), flash[:notice] = "Your Deck has sucessfully been added"
-        else
-            @deck = Deck.new
-            render :new
-            flash[:notice] = "Decklist couldn't compile, Please try again."
+        @deck = Deck.create(
+        name: params[:name],
+        user_id: current_user.id
+        )
+        params[:cards].map do |card|
+        DeckCard.create(
+            deck_id: @deck.id,
+            card_id: card[:id]
+        )
+        @deck.save
         end
+        render status: 200
     end
+
 
     def index
         @decks = Deck.all
@@ -53,7 +55,7 @@ class DecksController < ApplicationController
     private
 
     def deck_params
-        params.require(:deck).permit(:name, :creator, :mainboard, :sideboard)
+        params.require(:deck).permit(:name, :user_id)
     end
 
     def card_params
@@ -61,7 +63,7 @@ class DecksController < ApplicationController
     end
 
     def deck_card_params
-        params.require(:deck).permit(deck_cards_attributes: [:card_count, :card_id, card: [:name]])
+        params.require(:deck).permit(deck_cards_attributes: [:deck_id, :card_id, card: [:name]])
     end
 
     def find_deck_card
