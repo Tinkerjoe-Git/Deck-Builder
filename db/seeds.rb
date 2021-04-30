@@ -1,53 +1,57 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
 require 'mtg_sdk'
 require 'faker'
 
 
-4.times do
-    User.create(
-        name: Faker::Name.name,
-        email: Faker::Internet.email,
-        username: Faker::Internet.username,
-        password: Faker::Internet.password
-    )
-end
 
-20.times do 
-  Decklist.create(
-    quantities: "#{rand(1..4)} #{["Gilded Goose", "Questing Beast", "Brazen Borrower", "Once Upon a Time", "Oko, Thief of Crowns", "The Great Henge", "Lovestruck Beast", "Island", "Plains", "Mountain", "Swamp", "Forest", "Scorching Dragonfire", "Bonecrusher Giant", "Embercleave", "Robber of the Rich", "Acclaimed Contender", "Venerable Knight", "The Circle of Loyalty", "Tournament Grounds", "Joust", "Worthy Knight"].sample}",
-    card_id: rand(1..457),
-    deck_id: rand(1..20)
-  )
-end
+# User.create_admin
 
-User.create(name: "Pasta Batman", email: "pastabatman@gmail.com", username: "MTGbatman",  password: "password")
-
-set_data = MTG::Card.where(set: 'eld').all
+# card_data = MTG::Card.all
     
 
-    set_data.each do |data|
+#     card_data.each do |data|
+#         puts 'generating card data...'
+#         cards = Card.create(
+#             name: data.name,
+#             text: data.text,
+#             power: data.power.to_i,
+#             toughness: data.toughness.to_i,
+#             cmc: data.cmc.to_i,
+#             rarity: data.rarity,
+#             artist: data.artist,
+#             flavor: data.flavor,
+#             loyalty: data.loyalty.to_i,
+#             number: data.number.to_i,
+#             multiverse_id: data.multiverse_id.to_i,
+#             image_url: data.image_url,
+#             colors: data.colors.to_s,
+#             set: data.set,
+#             card_type: data.type,
+#             mana_cost: data.mana_cost.to_s
+#         )
+#         cards.save
+#         puts "#{cards.name} generated"
+#     end
+
+formats = ['Standard', 'Modern', 'Legacy', 'Vintage', 'Historic', 'Pioneer']
+
+puts "Grabbing sets"
+
+set_data = MTG::Set.all
+
+     set_data.each do |data|
         puts 'generating set data...'
-        cards = Card.create(
+        sets = MagicSet.create(
             name: data.name,
-            text: data.text,
-            power: data.power.to_i,
-            toughness: data.toughness.to_i,
-            cmc: data.cmc.to_i,
-            image_url: data.image_url,
-            colors: data.colors.to_s,
-            set: data.set,
-            card_type: data.type,
-            mana_cost: data.mana_cost.to_s
+            code: data.code,
+            release_date: data.release_date
         )
-        cards.save
-        puts "#{cards.name} generated"
-    end
+        sets.save
+        puts "#{sets.name} generated"
+     end
+
+
+
+
 
 
     

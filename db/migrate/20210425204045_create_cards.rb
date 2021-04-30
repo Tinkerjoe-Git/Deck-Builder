@@ -15,7 +15,7 @@ class CreateCards < ActiveRecord::Migration[6.1]
       t.string :mana_cost
       t.string :image_url
       t.integer :loyalty
-      t.string :number
+      t.integer :number
       t.integer :multiverse_id
       t.belongs_to :magic_set, index: true
 

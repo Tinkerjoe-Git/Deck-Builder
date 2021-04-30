@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 2021_04_29_223159) do
     t.string "mana_cost"
     t.string "image_url"
     t.integer "loyalty"
-    t.string "number"
+    t.integer "number"
     t.integer "multiverse_id"
     t.integer "magic_set_id"
     t.datetime "created_at", precision: 6, null: false
