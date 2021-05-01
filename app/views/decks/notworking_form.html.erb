@@ -1,18 +1,20 @@
 <%= form_with(model: @deck) do |f| %>
-    <%= f.label :name %>
-    <%= f.text_field :name %><br>
-   <div>
-    <%= f.fields_for :deck_cards, @cards do |deck_card| %>
-    <div>
-      card_count: <%= deck_card.text_field :card_count %>
-  
-    Select Card: <%= deck_card.collection_select :card_id, Card.order('name ASC').all, :id, :name, include_blank: 'Select card' %>
-    <%= deck_card.fields_for :card, deck.cards.build do |card| %>
-    <% end %>
-    </div>
-      <% end %>
-   </div>   
-  
-    
-    <%= f.submit button_name %>
+  <%= f.label :name %>
+  <%= f.text_field :name %><br>
+
+  <%= f.label :creator %>
+  <%= f.text_field :creator %><br>
+
+  <%= f.label :mainboard %>
+  <%= f.text_field :mainboard %><br>
+
+  <%= f.label :sideboard %>
+  <%= f.text_field :sideboard %><br>
+
+  <% Card.all.each do |card| %>
+    <%= f.check_box :card_ids, { multiple: true }, card.id, nil %>
+    <%= card.name %>
+  <% end %>
+
+  <%= f.submit button_name %>
 <% end %>

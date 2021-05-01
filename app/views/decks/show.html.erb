@@ -1,5 +1,22 @@
-<p><%= @deck.name %></p>
+<h1><%= @deck.name %></h1>
 
-<p>creator: <%= @deck.user.username %></p>
+<%= link_to 'Back', decks_path %>
+<%= link_to 'Edit', edit_deck_path(@deck) %>
 
-<p>cards: <%= @deck.cards.map { |card| card.name }.join(", ") %></p>
+<p>
+  Creator: <strong><%= @deck.user.username %></strong>
+</p>
+
+<div>
+  <h3>Cards</h3>
+
+  <ul>
+    <% @deck.cards.each do |card| %>
+      <li>
+        <%= link_to(card) do %>
+          <%= image_tag(card.image_url) %>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+</div>

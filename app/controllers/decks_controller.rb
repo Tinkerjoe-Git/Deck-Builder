@@ -15,9 +15,6 @@ class DecksController < ApplicationController
     end
 
     def create
-        # What we expect params to be:
-        # deck_params = { name: "hello", card_ids: [1, 2, 3] }
-
         @deck = current_user.decks.create!(name: deck_params[:name])
 
         deck_params[:card_ids].map do |card_id|
