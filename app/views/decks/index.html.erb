@@ -1,0 +1,22 @@
+
+<div class='content-wrapper'>
+	<h2 class="content-title">Decks</h2>
+
+		<div class="deck-index-container">
+			<% if @decks.length != 0 %>
+				<% for deck in @decks %>
+					<div class="index-deck-wrapper">
+						<div class="deck-image"></div>
+						<div><a href="/users/<%= deck.user_id %>/decks/<%= deck.id %>/" class="index-deck-name"><%= deck.name %></a></div>
+						<% if logged_in? %>
+							<% if deck.user_id == current_user.id %>
+							<div class="button-holder"><a href="/users/<%= deck.user_id %>/decks/<%= deck.id %>/edit/1" class="link-button invert-button-color">Edit</a></div>
+							<% end %>
+						<% end %>
+					</div>
+				<% end %>
+		</div>
+			<% else %>
+				<h2 class='content-title'>No decks currently made.</div>
+			<% end %>
+</div>

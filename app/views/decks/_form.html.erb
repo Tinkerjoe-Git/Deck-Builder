@@ -1,6 +1,7 @@
 <%= form_with(model: @deck) do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %><br>
+  <%= f.submit button_name %>
 
   <% Card.all.each do |card| %>
     <%= f.check_box :card_ids, { multiple: true }, card.id, nil %>

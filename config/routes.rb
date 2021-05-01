@@ -28,6 +28,8 @@ Rails.application.routes.draw do
 
   post '/decks', to: "decks#create"
 
+  get "/users/:user_id/decks/:id/edit/:page_num", to: "decks#edit"
+
   get '/auth/google_oauth2/callback', to: 'sessions#omniauth'
   get '/search', to: 'cards#search', as: 'search'
 

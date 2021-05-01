@@ -10,6 +10,11 @@ class DecksController < ApplicationController
         @decks = Deck.all
     end
 
+    def search
+        @decks = Deck.search(params[:name])
+        render :index
+    end
+
     def edit
         @deck = Deck.find(params[:id])
     end
