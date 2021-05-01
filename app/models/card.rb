@@ -14,6 +14,8 @@ class Card < ApplicationRecord
     @cards.sort_by { |c| c.colors }
   end
 
+  
+
 
 
 
