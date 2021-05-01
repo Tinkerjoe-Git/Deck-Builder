@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   
   resources :users
   resources :cards
+  resources :decks
   
   resources :deck_cards do
     resources :cards

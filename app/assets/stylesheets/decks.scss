@@ -1,3 +1,18 @@
 // Place all the styles related to the decks controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.deck-index-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 75%;
+  margin: 0 auto;
+}
+
+.index-deck-name:hover {
+  color: #FA8072;
+}
+
+.button-holder {
+  margin: 35px 0 25px;
+}
