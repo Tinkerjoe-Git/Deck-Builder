@@ -9,13 +9,13 @@ class Card < ApplicationRecord
   scope :search, -> (query) { self.where("name LIKE ?", "%#{query}%") }
 
 
-
-  # TODO: What is this?
-  def deck_attributes=(attributes) 
-      if !attributes[:name].blank?
-          self.deck = Deck.find_or_create_by(attributes)
-      end
+  def self.sort_by_colors(colors)
+    @cards = Card.all
+    @cards.sort_by { |c| c.colors }
   end
+
+
+
 
   private
 
