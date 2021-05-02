@@ -6,3 +6,24 @@
         <%= f.label :name %>
         <%= f.text_field :name %>
     </div>
+
+
+
+    <%= render partial: 'errors/errors', locals: {model: @user} if @user %>
+
+    <h1>Sign Up</h1>
+        <%= form_for @user do |f| %>
+        <%= render partial: 'errors/errors', locals: {model: @user} if @user %>
+            <%= render partial: 'signup', locals: {f: f} %>
+    
+                <%= f.label :password %>
+                <%= f.password_field :password %>
+                <%= f.label :confirm %>
+                <%= f.password_field :password_confirmation %>
+                <br>
+            <%= f.submit 'Sign Up', class: 'button' %>
+  
+    
+        <% end %>
+        
+        <%= button_to "Sign up with Google", '/auth/google_oauth2', class: "button"  %>

@@ -1,5 +1,7 @@
 <h1> Edit a Deck </h1>
 
+<%= link_to "Delete Deck", deck_path(@deck), method: "delete" %>
+
 <%= render partial: 'form', locals: { form_title: "Edit Deck", deck: @deck, button_name: "Update Deck"  } %>
 
 <%= link_to "Delete Deck", deck_path(@deck), method: "delete" %>
