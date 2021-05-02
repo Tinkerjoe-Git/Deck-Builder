@@ -27,22 +27,7 @@ $light-gray: #D4D4D4;
   background-attachment: fixed;
 }
 
-.search-button{
-	grid-row: 2/3;
-	grid-column: 6/7;
-  text-align: center;
-}
 
-.search {
-  width: 100%;
-  font-family: inherit;
-  margin-bottom: auto;
-  margin-top: 20px;
-  height: 50px;
-  background-color: #fff;
-  padding: 10px;
-  border-radius: 5px
-}
 
 .searchForm{
 	display: grid;
@@ -102,7 +87,7 @@ form {
   box-shadow: 0 0 10px rgba(0, 0, 0, .3);
 }
 
-x {
+.div {
   color: #fff;
   float: left;
   background-image: linear-gradient(135deg, #723362, #9d223c);
@@ -117,8 +102,8 @@ x {
   margin: .1em 22px;
 }
 
-nav {
-  background-color: #282828;
+.navbar-brand {
+  background-color: inherit;
 
   ul {
     display: flex;
@@ -163,4 +148,48 @@ nav {
 
 .link-button:hover {
   filter: invert(100%);
+}
+
+
+.search {
+  width: 100%;
+  font-family: inherit;
+  margin-bottom: auto;
+  margin-top: 20px;
+  height: 50px;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 5px
+}
+
+.search-input {
+  color: white;
+  border: 0;
+  outline: 0;
+  background: none;
+  width: 0;
+  margin-top: 5px;
+  caret-color: transparent;
+  line-height: 20px;
+  transition: width 0.4s linear
+}
+
+.search-icon:hover {
+  color: #fff !important
+}
+
+.btn-outline-success {
+  font-family: inherit;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(135deg, #723362, #9d223c);
+  background-color: #9d223c;
+  font-size: inherit;
+  color: #999;
+  border-color: rgb(0, 0, 0);
+  font-weight: 100;
+  border: 1px solid transparent;
+  width: 180px;
+  height: 45px;
+  margin-right: 10px;
 }

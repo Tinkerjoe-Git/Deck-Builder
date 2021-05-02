@@ -7,10 +7,12 @@
   <%= f.text_field :name %><br>
   <%= f.submit button_name %>
 
+  
   <% Card.all.each do |card| %>
+  <li>
     <%= f.check_box :card_ids, { multiple: true }, card.id, nil %>
     <%= card.name %>
   <% end %>
-
+  </li>
   <%= f.submit button_name %>
 <% end %>
