@@ -52,5 +52,23 @@ li img{
   left: 30px;
 }
 
+.card-container {
+  color: #fff;
+  justify-content: center;
+  background-image: linear-gradient(135deg, #723362, #9d223c);
+  background-color: #9d223c;
+  opacity: 0.9;
+  border: 1px solid transparent;
+  font-family: inherit;
+  font-weight: 800;
+  padding: .05em 0;
+  font-weight: 500;
+  font-size: 16px;
+  text-transform: inherit, uppercase;
+  text-align: center;
+  letter-spacing: .15em;
+  margin: .2em 22px;
+}
+
 
 

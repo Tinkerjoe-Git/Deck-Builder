@@ -2,12 +2,28 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-.deck-index-container {
+.show-deck-card-wrapper {
   display: flex;
   flex-wrap: wrap;
   width: 75%;
   margin: 0 auto;
+  color: #fff;
+  justify-content: center;
+  background-image: linear-gradient(135deg, #723362, #9d223c);
+  background-color: #9d223c;
+  opacity: 0.9;
+  border: 1px solid transparent;
+  font-family: inherit;
+  font-weight: 800;
+  padding: .05em 0;
+  font-weight: 500;
+  font-size: 20px;
+  text-transform: inherit, uppercase;
+  text-align: center;
+  letter-spacing: .15em;
+  margin: .2em 22px;
 }
+
 
 .index-deck-name:hover {
   color: #FA8072;
