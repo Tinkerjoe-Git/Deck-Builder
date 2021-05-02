@@ -16,3 +16,41 @@
      transform: scale(1.05);
   box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
 }
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 1200px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.div {
+  display: flex;
+  justify-content: space-around;
+  
+  width: 800px;
+  margin: 50px 0;
+  background-color: #D6E9FE;
+}
+
+// .item img {
+//   display: block;
+// }
+
+li img{
+  position: relative;
+  top: 30px;
+  left: 30px;
+}
+
+
+
