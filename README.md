@@ -19,7 +19,7 @@ An IDE:
 
 4. Run 'rails s' in your terminal to create our local environment,
  
-5. Use cntl(or 'cmd') + left click on the local host link that shotgun gives you, this will take us into the app, enjoy. 
+5. Use cntl(or 'cmd') + left click on the local host link that Rails / Puma output, this will take us into the web app, enjoy. 
 
 
 ## Built With
