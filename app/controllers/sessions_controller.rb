@@ -18,20 +18,6 @@ class SessionsController < ApplicationController
       end
   end
 
-  # def create
-  #   puts auth
-  #   user = User.find_or_create_by(username: auth[:info][:email]) do |u|
-  #       u.email = auth[:info][:email]
-  #       u.username = auth[:info][:email]
-  #       u.name = auth[:info][:name]
-  #       u.uid = auth[:uid]
-  #       u.provider = auth[:provider]
-  #       u.password = SecureRandom.hex(10)
-  #   end
-  #   session[:user_id] = user.id
-  #   redirect_to '/'
-  # end
-
   def logout
     session.delete :user_id
     redirect_to '/login'
@@ -52,7 +38,7 @@ class SessionsController < ApplicationController
       flash[:messsage] = "You've signed in with Google!"
       session[:user_id] = @user.id
       redirect_to cards_path
-      # else
+      # if @user.valid? == false
       #     flash[:message] = "Credentials didn't go through"
       #     redirect_to login_path
       # end

@@ -1,5 +1,5 @@
 class DecksController < ApplicationController
-    # before_action :find_deckcards, only: [:index, :new, :create]
+    before_action :redirect_if_not_logged_in, only: [:new, :create, :edit, :update]
     #skip_before_action :verify_authenticity_token
 
     def new
