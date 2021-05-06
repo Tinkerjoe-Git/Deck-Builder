@@ -1,0 +1,6 @@
+  
+<li><h2><%= link_to deck.name, deck_path(deck)%></h2></li>
+<li> By: <%= link_to deck.user_name, user_path(deck.user)%> | <%= render 'favorites/favorited', deck: deck%></l2>
+<% if !current_page?('/') && logged_in? %>
+  <%= link_to "Edit", edit_deck_path(deck) if current_user.can_edit?(deck)%> | <%= link_to "Delete", deck_path(deck), method: :delete if current_user.can_delete?(deck)%>
+<% end %>

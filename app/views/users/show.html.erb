@@ -1,0 +1,14 @@
+
+<% if @decks.first %>
+  <h1>decks by: <%= @user.name %></h1>
+  <%= render 'decks/decks_listed', decks: @decks %>
+<% end %>
+<% if logged_in? && current_user.owns?(params[:id])%>
+  <% if @collections.first %>
+    <h1>Here are your favorite decks:</h1>
+    <%= render 'decks/collections_listed', collections: @collections %>
+  <% end %>
+  <h1>Add your own deck now!</h1>
+  <%= render 'decks/form', deck: @deck, card: @cards %>
+  <h3><%= link_to "Make Other Users Admins", user_admin_index_path(current_user) if current_user.admin?%></h3>
+<% end %>

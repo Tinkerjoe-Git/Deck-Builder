@@ -18,7 +18,8 @@ class UsersController < ApplicationController
 
     def show
         @user = current_user.id
-        @deck = Deck.new
+        @decks = @user.decks
+        @collections = user.collections
     end
 
     private

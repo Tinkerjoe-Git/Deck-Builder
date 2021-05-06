@@ -1,5 +1,6 @@
 class Card < ApplicationRecord
   # belongs_to :deck, optional: true
+  has_many :collections
   has_many :deck_cards
   has_many :decks, through: :deck_cards
 

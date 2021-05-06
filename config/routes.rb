@@ -1,16 +1,26 @@
 Rails.application.routes.draw do
 
 
-  
+ 
+  # resources :collections do
+  #   resources :cards, only: [:index, :show, :new]
+  # end
+
   resources :users
-  resources :cards
+
+  resources :cards do
+    resources :collections
+    get '/collections', to: 'collections#show'
+    post '/collections', to: 'collections#update'
+  end
+
   resources :decks
   
   resources :deck_cards do
     resources :cards
   end
   resources :decks do
-    resources :deck_cards
+    resources :deck_cards, only: [:index, :new, :create]
   end
 
   
