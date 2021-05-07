@@ -1,13 +1,14 @@
-<%= form_with(model: model) do |f| %>
+
+<%= form_with(model: @collection) do |f| %>
     <%= f.label :count %>
     <%= f.text_field :count %><br>
-    <h3> <%= form_title %></h3>
-    <%= f.fields_for :cards do |i| %>
-      <%= i.label :name %>
-      <%= i.text_field :name %><br>
-      <hr>
-    <% end %>
-  
     
+
+    <% Card.all.each do |card| %>
+    <li>
+      <%= f.check_box :card_ids, { multiple: true }, card.id, nil %>
+      <%= card.name %>
+    <% end %>
+    </li>
     <%= f.submit button_name %>
 <% end %>

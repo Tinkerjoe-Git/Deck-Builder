@@ -1,5 +1,5 @@
 class CardsController < ApplicationController
-    #before_action :redirect_if_not_logged_in, only: [:new, :create, :edit, :update]
+    before_action :find_collection, only: [:index, :new, :create]
 
     def search
         @cards = Card.search(params[:name])
@@ -16,6 +16,11 @@ class CardsController < ApplicationController
     end
     
     def new
+        if @collection
+            @cards = @collection.cards.build
+        else
+            @cards = Card.new
+        end
     end
 
     def create
@@ -35,7 +40,11 @@ class CardsController < ApplicationController
     private
     #Strong Params
     def card_params
-        params.require(:card).permit(:name, :text, :power, :toughness, :cmc, :card_type, :colors, :set, :mana_cost, :image_url)
+        params.require(:card).permit(:name, :text, :power, :toughness, :cmc, :card_type, :colors, :set, :mana_cost, :image_url, collection_attributes: [:count])
+    end
+
+    def find_collection
+        @collection = Collection.find_by_id(params[:collection_id])
     end
 
 end

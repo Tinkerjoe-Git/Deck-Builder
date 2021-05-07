@@ -1,6 +1,7 @@
 class Card < ApplicationRecord
   # belongs_to :deck, optional: true
-  has_many :collections
+  belongs_to :collections, optional: true
+  belongs_to :user, optional: true
   has_many :deck_cards
   has_many :decks, through: :deck_cards
 
@@ -10,9 +11,8 @@ class Card < ApplicationRecord
   scope :search, -> (query) { self.where("name LIKE ?", "%#{query}%") }
 
 
-  def self.sort_by_colors(colors)
-    @cards = Card.all
-    @cards.sort_by { |c| c.colors }
+  def collection_attributes=(attributes)
+    self.collection = collection.find_or_create_by(attributes)
   end
 
   

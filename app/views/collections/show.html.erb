@@ -1,10 +1,15 @@
 
 <h1>This Collections Cards: </h1>
-<%= link_to "Collection", collection_cards_path(@collection) %>
-<ul>
-<% @collection.cards.each do |img| %>
-    <li><%= link_to(card.name, card_path(image_url)) %></li>
-<% end %>
-</ul>
+<%= link_to "Collection", collections_path(@collection) %>
+  <ul>
+    <% @collection.cards.each do |card| %>
+      <li>
+        <%= link_to(card) do %>
+          <%= image_tag(card.image_url) %>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+
 
 <%= link_to 'back', collections_path %>
