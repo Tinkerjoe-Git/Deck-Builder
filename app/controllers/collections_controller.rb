@@ -1,23 +1,35 @@
 class CollectionsController < ApplicationController
-  def show
-    collection = Collection.find_by(user: current_user, card: find_by_card_id)
-    render: collection
+
+  def new
+    @collection = Collection.new
+    3.times{ @collection.cards.build }
   end
 
-  def update
-    if logged_in? 
-      if params["id"] == ""
-        collection = Collection.create(card: find_by_card_id, user: current_user)
-        render: collection, status: 201
-      else
-        collection = Collection.find_by(card: find_by_card_id, user: current_user)
-        collection.delete
-        render: collection, status: 201
-      end
-    else 
-      flash["alert"] = "Please login to collect cards"
-      redirect_back(fallback_location: root_path)
+  # def edit
+  #   @collection = Collection.find(params[:id]
+  # end
+
+  def show
+    collection = Collection.find(params[:id])
+  end
+
+  def create
+    @collage = Collage.new(collage_params)
+
+    if @collage.save
+      redirect_to collage_path(@collage)
+    else
+      render :new
     end
   end
 
+  private
+
+  def collection_params
+    params.require(:collection).permit(:user_id, :card_id, :count)
+  end
 end
+
+
+
+

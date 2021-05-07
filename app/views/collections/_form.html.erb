@@ -1,0 +1,13 @@
+<%= form_with(model: model) do |f| %>
+    <%= f.label :count %>
+    <%= f.text_field :count %><br>
+    <h3> <%= form_title %></h3>
+    <%= f.fields_for :cards do |i| %>
+      <%= i.label :name %>
+      <%= i.text_field :name %><br>
+      <hr>
+    <% end %>
+  
+    
+    <%= f.submit button_name %>
+<% end %>

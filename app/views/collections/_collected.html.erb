@@ -1,10 +1,1 @@
-<% if current_user && card.collections?(current_user) %>
-  <span class="collections collected">
-    <%= link_to image_tag(card.image_url), "#", :data => {:card => card.id }%>
-    
-  </span>
-<% else %>
-  <span class="collections collected">
-    <%= link_to image_tag(card.image_url), "#", :data => {:card => card.id }%>
-  </span>
-<% end %>
+<li><%= link_to(collage, collage_path(collage)) %></li>
