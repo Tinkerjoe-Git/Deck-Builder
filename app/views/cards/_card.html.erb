@@ -1,3 +1,12 @@
+<li><%= link_to(card.name, card_path(card)) %></li>
+<div class="card-container">
 
+<%= image_tag(@card.image_url) %>
+    <p> Type: <%= @card.card_type %></p>
+    <p> Text: <%= @card.text %></p>
+    <p> Set: <%= @card.set %></p>
+    <p> Rarity: <%= @card.rarity %></p>
+    <p> Artist: <%= @card.artist %></p>
+    <p> Flavor: <%= @card.flavor %></p>
 
-<li><%= link_to(card.name, cards_path(card)) %></li>
+</div> 

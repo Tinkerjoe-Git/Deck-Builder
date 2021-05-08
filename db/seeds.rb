@@ -5,9 +5,9 @@ require 'faker'
 
 
 User.create_admin
-Collection.create(name: "Personal Collection")
-Collection.create(name: "Wishlist Collection")
 Collection.create(name: "Premium Collection")
+Collection.create(name: "Budget Collection")
+Collection.create(name: "Popular Collection")
 card_data = MTG::Card.where(set: 'khm').all
     
 
@@ -29,8 +29,7 @@ card_data = MTG::Card.where(set: 'khm').all
             colors: data.colors.to_s,
             set: data.set,
             card_type: data.type,
-            mana_cost: data.mana_cost.to_s,
-            collection_id: 1
+            mana_cost: data.mana_cost.to_s
         )
         cards.save
         puts "#{cards.name} generated"

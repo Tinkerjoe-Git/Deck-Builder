@@ -47,8 +47,7 @@ class CardsController < ApplicationController
             @card.update(collection_id: @collection.id)
             redirect_to collection_cards_path(@collection)
         else
-            redirect_to card_path(@card)
-            flash[:notice] = "Didn't work"
+            render :new
         end
     end
 
