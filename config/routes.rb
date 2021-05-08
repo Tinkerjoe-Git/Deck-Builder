@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :cards
 
   resources :collections do
-    resources :cards, only: [:index, :new, :create]
+    resources :cards, only: [:index, :new, :create, :update]
   end
   
   resources :collections
@@ -21,6 +21,8 @@ Rails.application.routes.draw do
   resources :decks do
     resources :deck_cards, only: [:index, :new, :create]
   end
+
+  resources :users
 
   
 

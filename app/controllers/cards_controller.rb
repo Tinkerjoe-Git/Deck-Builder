@@ -41,15 +41,14 @@ class CardsController < ApplicationController
     # end
 
     def create
-        @card = Card.find_by_id(params[:card_id])
-        if @card.save
-            if @collection
-                redirect_to collection_cards_path(@collection)
-            else
-                redirect_to card_path(@card)
-            end
+        @card = Card.find_by_id(card_params[:card_id])
+        @collection = Collection.find_by_id(card_params[:collection_id])
+        if @collection
+            @card.update(collection_id: @collection.id)
+            redirect_to collection_cards_path(@collection)
         else
-            render :new
+            redirect_to card_path(@card)
+            flash[:notice] = "Didn't work"
         end
     end
 
@@ -67,7 +66,7 @@ class CardsController < ApplicationController
     private
     #Strong Params
     def card_params
-        params.require(:card).permit(:name, :text, :power, :toughness, :cmc, :card_type, :colors, :set, :mana_cost, :card_url, :collection_id, collection_attributes: [:name])
+        params.require(:card).permit(:name, :text, :power, :toughness, :cmc, :card_type, :colors, :set, :mana_cost, :card_url, :card_id, :collection_id, collection_attributes: [:name])
     end
 
     def find_collection

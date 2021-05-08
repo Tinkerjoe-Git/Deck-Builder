@@ -10,7 +10,7 @@ class UsersController < ApplicationController
         if @user.save
             flash[:message] = "Successfully signed up."
             session[:user_id] = @user.id
-            redirect_to user_path(@user)
+            redirect_to cards_path
         else
             render :new
         end
