@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   resources :collections do
   
-    resources :cards
+    resources :cards, only: [:index, :new, :create]
 
   end
   

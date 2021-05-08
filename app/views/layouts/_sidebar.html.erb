@@ -14,10 +14,7 @@
         <li>
             <%= link_to 'All Collections', collections_path, class: 'nav-link active' %>
         </li>
-
-        <li>
-            <%= link_to 'Make a New Collection', new_collection_card_path, class: 'nav-link active' %>
-        </li>
+           
         <div class="dropdown text-end">
                 <a href="#" class="nav-link px-2 text-white dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                     Collection
@@ -28,7 +25,10 @@
                   <li><%= link_to "Wishlist", collection_cards_path(3), class: "dropdown-item" %></li>
                 </ul>
         </div>
+
+
         <% if logged_in? %>
+            
             
             
             <li>

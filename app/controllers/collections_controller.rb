@@ -2,13 +2,8 @@ class CollectionsController < ApplicationController
 
 
   def new
-    if params[:card_id]
-      @cards = Cards.find_by(params[:card_id])
-      @collection = @cards.collections.build
-    else
-      @collection = Collection.new
-    end
-      
+    @collection = Collection.new
+    3.times { @collection.cards.build } 
   end
 
   # def edit
@@ -20,34 +15,21 @@ class CollectionsController < ApplicationController
   end
 
 
-  def create 
-    if params[:card_id]
-      @cards = Card.find_by(params[:card_id])
-      @collection = @cards.collections.build(collection_params)
-    else 
-      @collection = Collection.new(collection_params)
-    end 
+ 
+  def create
+    @collage = Collage.new(collage_params)
 
-    if @collection.save 
-      redirect_to collection_path(@collection)
-    else 
+    if @collage.save
+      redirect_to collage_path(@collage)
+    else
       render :new
-    end 
-  end 
-  # def create
-  #   @collage = Collage.new(collage_params)
-
-  #   if @collage.save
-  #     redirect_to collage_path(@collage)
-  #   else
-  #     render :new
-  #   end
-  # end
+    end
+  end
 
   private
 
   def collection_params
-    params.require(:collection).permit(:count, :collection_id, card_attributes: [:name, :text, :power, :toughness, :cmc, :card_type, :colors, :set, :mana_cost, :image_url])
+    params.require(:collection).permit(:name, card_attributes: [:name, :text, :power, :toughness, :cmc, :card_type, :colors, :set, :mana_cost, :image_url])
   end
 end
 

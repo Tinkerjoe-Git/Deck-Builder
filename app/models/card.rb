@@ -12,17 +12,10 @@ class Card < ApplicationRecord
 
 
   def collection_attributes=(attributes)
-    self.collection = collection.find_or_create_by(attributes)
+    if !(attributes[:name].blank?)
+      self.collection = collection.find_or_create_by(attributes)
+    end
   end
 
   
-
-
-
-
-  private
-
-  def card_params
-    params.require(:card).permit(:name, :text, :power, :toughness, :cmc, :rarity, :card_type, :artist, :colors, :set, :flavor, :mana_cost, :image_url, :loyalty, :number, :multiverse_id, :magic_set_id)
-  end
 end
