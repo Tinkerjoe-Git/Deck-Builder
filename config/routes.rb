@@ -5,14 +5,10 @@ Rails.application.routes.draw do
   # resources :collections do
   #   resources :cards, only: [:index, :show, :new]
   # end
-
-  resources :users
-  
+  resources :cards
 
   resources :collections do
-  
     resources :cards, only: [:index, :new, :create]
-
   end
   
   resources :collections

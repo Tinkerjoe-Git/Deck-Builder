@@ -8,9 +8,7 @@ class CardsController < ApplicationController
 
 
     def index
-        binding.pry
         if @collection
-            
             @cards=@collection.cards
         else
             @cards=Card.all
@@ -43,7 +41,7 @@ class CardsController < ApplicationController
     # end
 
     def create
-        @card = Card.new(card_params)
+        @card = Card.find_by_id(params[:card_id])
         if @card.save
             if @collection
                 redirect_to collection_cards_path(@collection)

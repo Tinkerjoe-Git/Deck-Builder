@@ -5,7 +5,9 @@ require 'faker'
 
 
 User.create_admin
-
+Collection.create(name: "Personal Collection")
+Collection.create(name: "Wishlist Collection")
+Collection.create(name: "Premium Collection")
 card_data = MTG::Card.where(set: 'khm').all
     
 

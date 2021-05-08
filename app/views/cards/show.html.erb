@@ -1,11 +1,13 @@
 
 <h1><%= @card.name %></h1>
 <div class="card-container">
-<%= image_tag(@card.image_url) %>
-    <p> Type: <%= @card.card_type %></p>
-    <p> Text: <%= @card.text %></p>
-    <p> Set: <%= @card.set %></p>
-    <p> Rarity: <%= @card.rarity %></p>
-    <p> Artist: <%= @card.artist %></p>
-    <p> Flavor: <%= @card.flavor %></p>
-</div>
+<% if @card.image_url%>
+    <%= image_tag(@card.image_url) %>
+        <p> Type: <%= @card.card_type %></p>
+        <p> Text: <%= @card.text %></p>
+        <p> Set: <%= @card.set %></p>
+        <p> Rarity: <%= @card.rarity %></p>
+        <p> Artist: <%= @card.artist %></p>
+        <p> Flavor: <%= @card.flavor %></p>
+<%end%>
+</div> 
