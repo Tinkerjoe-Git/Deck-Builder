@@ -10,20 +10,17 @@
         <li>
             <%= link_to 'Card Collection from Standard', cards_path, class: 'nav-link active' %>
         </li>
-
-        <li>
-            <%= link_to 'All Collections', collections_path, class: 'nav-link active' %>
-        </li>
            
         <div class="dropdown text-end">
                 <a href="#" class="nav-link px-2 text-white dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                     Collection
                 </a>
                 <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-                  <li><%= link_to "Premium", collection_cards_path(1), class: "dropdown-item" %></li>
-                  <li><%= link_to "Budget", collection_cards_path(2), class: "dropdown-item" %></li>
-                  <li><%= link_to "Popular", collection_cards_path(3), class: "dropdown-item" %></li>
+                    <% Collection.all.each do |c| %>
+                    <li><%= link_to c.name, collection_cards_path(c.id), class: "dropdown-item" %></li>
+                    <% end %>
                 </ul>
+                
         </div>
 
 

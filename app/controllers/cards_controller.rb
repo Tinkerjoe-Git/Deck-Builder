@@ -42,7 +42,12 @@ class CardsController < ApplicationController
 
     def create
         @card = Card.find_by_id(card_params[:card_id])
-        @collection = Collection.find_by_id(card_params[:collection_id])
+        if card_params[:collection_attributes][:name]
+            @collection=Collection.create(name: card_params[:collection_attributes][:name])
+        else
+            @collection = Collection.find_by_id(card_params[:collection_id])
+        end
+        
         if @collection
             @card.update(collection_id: @collection.id)
             redirect_to collection_cards_path(@collection)
