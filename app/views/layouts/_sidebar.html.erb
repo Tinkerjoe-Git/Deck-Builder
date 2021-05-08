@@ -14,10 +14,22 @@
         <li>
             <%= link_to 'All Collections', collections_path, class: 'nav-link active' %>
         </li>
+
+        <li>
+            <%= link_to 'Make new collection', new_collection_cards_path, class: 'nav-link active' %>
+        </li>
+        <div class="dropdown text-end">
+                <a href="#" class="nav-link px-2 text-white dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    Collection
+                </a>
+                <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+                  <li><%= link_to "Fancy", collection_cards_path(1), class: "dropdown-item" %></li>
+                  <li><%= link_to "Personal", collection_cards_path(2), class: "dropdown-item" %></li>
+                  <li><%= link_to "Wishlist", collection_cards_path(3), class: "dropdown-item" %></li>
+                </ul>
+        </div>
         <% if logged_in? %>
-            <li>
-                <%= link_to "New Collection", new_collection_path, class: 'nav-link active' %>
-            </li>
+            
             
             <li>
                 <%= link_to 'Create New Deck', new_deck_path, class: 'nav-link active' %>
@@ -34,7 +46,7 @@
                 <%= link_to 'Sign Up', signup_path, class: 'nav-link active' %>
             </li>
             <li>
-                <%= link_to 'Log In With Your Google Account', "/auth/google_oauth2", class: 'nav-link active', method: "post" %>
+                <%= link_to 'Log In With Your Google Account', "/auth/google_oauth2", class: 'nav-link active', method: "card" %>
             </li>
         <% end %>
 

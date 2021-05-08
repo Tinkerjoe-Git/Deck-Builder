@@ -1,0 +1,20 @@
+<div class='content-wrapper'>
+    <h1><%= "New Collection" %></h1>
+</div>
+<%= form_with(model: [@collection, @card]) do |f| %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <h1>You are not allowed to make new card! You're not a wizard!</h1>
+    <% if @collection %>
+        <%= f.hidden_field :collection_id, value: @collection.id %> 
+    <%else%>
+        <h3> Select existing Collection </h3>
+        <%= f.collection_select(:collection_id, Collection.all, :id, :name) %>
+
+        <h3> Create New Collection</h3>
+        <%= f.fields_for :collection do |c| %>
+            <%= c.label :name %>
+            <%= c.text_field :name %><br>
+        <% end %>
+    <%end %>
+    <%= f.submit "Create Collection" %>
+<% end %>

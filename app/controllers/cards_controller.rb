@@ -17,13 +17,24 @@ class CardsController < ApplicationController
     
     def new
         if @collection
-            @cards = @collection.cards.build
+            @card = @collection.cards.build
         else
-            @cards = Card.new
+            @card = Card.new
+            @card.build_collection
         end
     end
 
     def create
+        @card = Card.new(card_params)
+        if @card.save
+            if @collection
+                redirect_to collection_cards_path(@collection)
+            else
+                redirect_to card_path(@card)
+            end
+        else
+            render :new
+        end
     end
 
     def edit
@@ -40,7 +51,7 @@ class CardsController < ApplicationController
     private
     #Strong Params
     def card_params
-        params.require(:card).permit(:name, :text, :power, :toughness, :cmc, :card_type, :colors, :set, :mana_cost, :image_url, collection_attributes: [:count])
+        params.require(:card).permit(:name, :text, :power, :toughness, :cmc, :card_type, :colors, :set, :mana_cost, :image_url, :collection_id, collection_attributes: [:name])
     end
 
     def find_collection

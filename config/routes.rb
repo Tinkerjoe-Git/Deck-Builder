@@ -6,14 +6,13 @@ Rails.application.routes.draw do
   #   resources :cards, only: [:index, :show, :new]
   # end
 
-  resources :users do
-    resources :collections
-  end
+  resources :users
+  
 
-  resources :cards do
-    resources :collections
-    get '/collections', to: 'collections#show'
-    post '/collections', to: 'collections#update'
+  resources :collections do
+  
+    resources :cards
+
   end
   
   resources :collections

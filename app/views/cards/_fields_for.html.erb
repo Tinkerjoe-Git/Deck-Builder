@@ -1,9 +1,9 @@
   
 <h3> Select an existing Collection </h3>
-<%= f.collection_select(:collection_id, Collection.all, :id, :count) %>
+<%= f.collection_select(:collection_id, Collection.all, :id, :name) %>
 
 <h3> Create a Collection </h3>
 <%= f.fields_for :collection do |c| %>
-    <%= c.label :count %>
-    <%= c.text_field :count %><br>
+    <%= c.label :name %>
+    <%= c.text_field :name %><br>
 <% end %>

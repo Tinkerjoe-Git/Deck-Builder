@@ -7,7 +7,6 @@ class CollectionsController < ApplicationController
       @collection = @cards.collections.build
     else
       @collection = Collection.new
-      @collection.build_user
     end
       
   end
