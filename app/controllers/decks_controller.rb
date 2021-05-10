@@ -25,7 +25,8 @@ class DecksController < ApplicationController
         deck_params[:card_ids].map do |card_id|
             DeckCard.create!(
                 deck_id: @deck.id,
-                card_id: card_id
+                card_id: card_id,
+                quantity: deck_card[:quantity]
             )
         end
 
@@ -71,7 +72,7 @@ class DecksController < ApplicationController
     end
 
     def deck_card_params
-        params.require(:deck).permit(deck_cards_attributes: [:deck_id, :card_id, card: [:name]])
+        params.require(:deck).permit(deck_cards_attributes: [:deck_id, :card_id, :quantity, card: [:name]])
     end
 
     def find_deck_card

@@ -42,7 +42,7 @@ class CardsController < ApplicationController
 
     def create
         @card = Card.find_by_id(card_params[:card_id])
-        if card_params[:collection_attributes][:name]
+        if card_params[:collection_attributes]
             @collection=Collection.create(name: card_params[:collection_attributes][:name])
         else
             @collection = Collection.find_by_id(card_params[:collection_id])

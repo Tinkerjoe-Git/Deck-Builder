@@ -11,6 +11,8 @@
   <% Card.all.each do |card| %>
   <li>
     <%= f.check_box :card_ids, { multiple: true }, card.id, nil %>
+    <%= f.label :quantity %>
+    <%= f.number_field :quantity%>
     <%= card.name %>
   <% end %>
   </li>
