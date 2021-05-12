@@ -1,5 +1,5 @@
 <div class='content-wrapper'>
-    <h1><%= "Change the Collection for Card" %></h1>
+    <h1><%= "Modify the Collection's Card Pool" %></h1>
 </div>
 <%= form_with(model: [@collection, @card]) do |f| %>
     <%= f.collection_select(:card_id, Card.all, :id, :name) %>

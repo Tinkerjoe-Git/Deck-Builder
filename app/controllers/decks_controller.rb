@@ -1,6 +1,5 @@
 class DecksController < ApplicationController
     before_action :redirect_if_not_logged_in, only: [:new, :create, :edit, :update]
-    #skip_before_action :verify_authenticity_token
 
     def new
         @deck = Deck.new
@@ -46,13 +45,24 @@ class DecksController < ApplicationController
 
     def update
         @deck = Deck.find_by(id: params[:id])
-        @deck.update(deck_params)
-
-        if @deck.valid?
-            redirect_to deck_path(@deck)
-        else
-            render :edit  
+        @original_deck_cards = @deck.deck_cards
+        @new_deck_cards = params[:cards]
+        @cids_to_destroy = @original_deck_cards.collect{|c| c[:id]} - @new_deck_cards.collect{|c| c[:id]}.compact
+        @deck_cards_to_add = @new_deck_cards.select{ |c| c[:id] == nil }
+        if @cids_to_destroy.length > 0
+            DeckCard.where(id: cids_to_destroy).destroy_all
         end
+
+        @new_deck_cards.each do |c|
+            @deck_card = DeckCard.new(
+                    deck_id: params[:id],
+                    card_id: Card.find_by(name: c[:name]).id,
+                    quantity: deck_params[:quantity][card_id.to_i-1]
+                )
+                @deck_card.save
+        end
+        @deck.save
+        redirect_to deck_path(@deck)
     end
 
     def destroy

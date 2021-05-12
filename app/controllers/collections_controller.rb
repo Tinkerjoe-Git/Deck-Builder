@@ -6,16 +6,14 @@ class CollectionsController < ApplicationController
     3.times { @collection.cards.build } 
   end
 
-  # def edit
-  #   @collection = Collection.find(params[:id]
-  # end
+  def edit
+    @collection = Collection.find(params[:id]
+  end
 
   def show
     collection = Collection.find(params[:id])
   end
 
-
- 
   def create
     @collage = Collage.new(collage_params)
 
