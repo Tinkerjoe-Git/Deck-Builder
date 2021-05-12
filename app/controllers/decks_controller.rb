@@ -46,20 +46,15 @@ class DecksController < ApplicationController
     def update
         @deck = Deck.find_by(id: params[:id])
         @original_deck_cards = @deck.deck_cards
-        @new_deck_cards = params[:cards]
-        @cids_to_destroy = @original_deck_cards.collect{|c| c[:id]} - @new_deck_cards.collect{|c| c[:id]}.compact
-        @deck_cards_to_add = @new_deck_cards.select{ |c| c[:id] == nil }
-        if @cids_to_destroy.length > 0
-            DeckCard.where(id: cids_to_destroy).destroy_all
-        end
-
-        @new_deck_cards.each do |c|
-            @deck_card = DeckCard.new(
-                    deck_id: params[:id],
-                    card_id: Card.find_by(name: c[:name]).id,
+        @original_deck_cards.destroy_all
+        @new_deck_cards = deck_params[:card_ids]
+        
+        @new_deck_cards.map do |card_id|
+            DeckCard.create!(
+                    deck_id: @deck.id,
+                    card_id: card_id,
                     quantity: deck_params[:quantity][card_id.to_i-1]
                 )
-                @deck_card.save
         end
         @deck.save
         redirect_to deck_path(@deck)

@@ -7,6 +7,9 @@
         <%= image_tag('pwlogo.jpg', width: '200px', height: '215px') %>
         <%= logo_name %>
       </a>
+        <%= form_with(url: search_path, method: 'get', class: 'd-flex') do |f|%>
+          <%= f.text_field :name, class: "form-control me-2", placeholder: "Search for Cards" %>
+          <%= f.submit :Search, class: "btn btn-outline-success" %>
+        <% end %>
 
-      
   </nav>
