@@ -21,12 +21,12 @@ class DecksController < ApplicationController
 
     def create
         @deck = current_user.decks.create!(name: deck_params[:name])
-
+        
         deck_params[:card_ids].map do |card_id|
             DeckCard.create!(
                 deck_id: @deck.id,
                 card_id: card_id,
-                quantity: deck_card[:quantity]
+                quantity: deck_card_params[:quantity]
             )
         end
 
@@ -68,7 +68,7 @@ class DecksController < ApplicationController
     end
 
     def card_params
-        params.require(:card).permit(:name, :text, :power, :toughness, :cmc, :rarity, :card_type, :artist, :colors, :set, :flavor, :mana_cost, :image_url, :loyalty, :number, :multiverse_id, :magic_set_id)
+        params.require(:card).permit(:name, :text, :power, :toughness, :cmc, :rarity, :card_type, :artist, :colors, :set, :flavor, :mana_cost, :image_url, :loyalty, :number, :multiverse_id, :magic_set_id, :quantity)
     end
 
     def deck_card_params
