@@ -1,18 +1,13 @@
 Rails.application.routes.draw do
 
-
- 
-  # resources :collections do
-  #   resources :cards, only: [:index, :show, :new]
-  # end
   resources :cards
 
   resources :collections do
     resources :cards, only: [:index, :new, :create]
   end
   
-  resources :deck_cards do
-    resources :cards
+  resources :deck_cards do 
+    resources :cards , only: [:index, :new, :create]
   end
   
   resources :decks do
@@ -21,10 +16,6 @@ Rails.application.routes.draw do
 
   resources :users
 
-  
-
-  
-  
   get '/signup', to: 'users#new'
   post '/signup', to: 'users#create'
 
@@ -45,7 +36,6 @@ Rails.application.routes.draw do
 
   root('static#home')
   
-
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

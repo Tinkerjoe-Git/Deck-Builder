@@ -1,9 +1,8 @@
-<h1> Cards Are Sorted by Their Type and Their Color Symbols </h1>
 
 <div class="card-container">
 <% if @collection %>
-     <h2><%=@collection.name  %></h2>
-    <%=link_to "Make new card for this collection", new_collection_card_path(@collection) %>
+     <h2><%=  @collection.name  %></h2>
+    <%=link_to "Add a New Card to The Collection", new_collection_card_path(@collection) %>
 <%end %> 
 <% @cards.each do |card| %>
 <li><%= link_to(card.name, card_path(card)) %></li>

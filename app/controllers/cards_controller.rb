@@ -30,16 +30,6 @@ class CardsController < ApplicationController
         render :new
     end
 
-    
-    # def new
-    #     if params[:collection_id]
-    #         @collection = Collection.find(params[:collection_id])
-    #         @card = @collection.cards.build
-    #     else
-    #         @card.build_collection
-    #     end
-    # end
-
     def create
         @card = Card.find_by_id(card_params[:card_id])
         if card_params[:collection_attributes]
@@ -52,6 +42,7 @@ class CardsController < ApplicationController
             @card.update(collection_id: @collection.id)
             redirect_to collection_cards_path(@collection)
         else
+            flash[:error] = "Collection Error check your fields, please try again"
             render :new
         end
     end
