@@ -23,11 +23,13 @@ class DecksController < ApplicationController
         @deck = current_user.decks.create!(name: deck_params[:name])
         
         deck_params[:card_ids].map do |card_id|
+            
             DeckCard.create!(
                 deck_id: @deck.id,
                 card_id: card_id,
-                quantity: deck_card_params[:quantity]
+                quantity: deck_params[:quantity][card_id.to_i-1]
             )
+    
         end
 
         redirect_to deck_path(@deck)
@@ -64,7 +66,7 @@ class DecksController < ApplicationController
     private
 
     def deck_params
-        params.require(:deck).permit(:name, card_ids: [])
+        params.require(:deck).permit(:name, card_ids: [], quantity: [])
     end
 
     def card_params
@@ -76,7 +78,7 @@ class DecksController < ApplicationController
     end
 
     def find_deck_card
-        @deck_card = DeckCard.find_by_id(params[:deck_card_id])
+        @deck_card = DeckCard.find_by(deck_id: params[:deck_id])
     end
 end
 

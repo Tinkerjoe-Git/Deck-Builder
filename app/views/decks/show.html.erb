@@ -5,20 +5,17 @@
 <%= link_to 'Edit', edit_deck_path(@deck) %>
 
 <p>
-  Card Count: <%= @deck.deck_cards.count %>
-<p>
-
-<p>
   Creator: <strong><%= @deck.user.username %></strong>
 </p>
 
 <div>
   <h3>Cards</h3>
-
+     
   <ul>
     <% @deck.cards.each do |card| %>
-      <li>
-        <%= link_to(card) do %>
+      <% @deckcard = DeckCard.find_by(deck_id: @deck.id, card_id: card.id) %>
+       <li>
+        <%= link_to(card) do %><%=@deckcard.quantity %>x
           <%= image_tag(card.image_url) %>
         <% end %>
       </li>

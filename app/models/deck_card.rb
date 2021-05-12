@@ -4,4 +4,6 @@ class DeckCard < ApplicationRecord
   validates :card_id, :deck_id, presence: true
 
   accepts_nested_attributes_for :card
+
+  
 end

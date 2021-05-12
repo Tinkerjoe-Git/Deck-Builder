@@ -11,6 +11,7 @@ class Deck < ApplicationRecord
   # accepts_nested_attributes_for :cards
 
   scope :search, -> (query) { self.where("name LIKE ?", "%#{query}%") }
+
 end
 
 
